@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Daljit Singh</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@700;800&display=swap">
+<style>
+/* Layout: dark page, hero statement, then a grid of cards. Each card opens on a drawn graphic in the Sideways ideas style; where real photos or film exist they appear on rollover or tap. */
+:root {
+  --ink: #0c0b0b;
+  --bg: #1d1b1c;
+  --cream: #f8f5e6;
+  --body: #d9d3c3;
+  --orange: #e05a3a;
+  --olive: #93a548;
+  --sand: #d9d4c4;
+  --line: rgba(248, 245, 230, 0.22);
+  --muted: #a8a294;
+  --display: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--text);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible, .reveal:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-block: 20px; border-bottom: 1px dashed var(--line);
+}
+.mark { font-family: var(--mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); }
+.pill {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--orange); color: var(--ink); text-decoration: none;
+  padding: 12px 20px; border-radius: 9999px; white-space: nowrap; display: inline-block;
+}
+
+.hero { padding-block: 72px 56px; border-bottom: 1px dashed var(--line); }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 20px; }
+h1 {
+  font-family: var(--display); font-weight: 800; color: var(--cream);
+  font-size: clamp(2.5rem, 7vw, 4.25rem); line-height: 1.02; letter-spacing: -0.025em;
+  margin: 0 0 24px; max-width: 14em; text-wrap: balance;
+}
+.lede { font-size: 19px; line-height: 28px; max-width: 40em; margin: 0; }
+
+.section-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0; padding-block: 40px 28px; }
+
+.grid {
+  display: grid; gap: 56px 32px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  padding-bottom: 72px;
+}
+.card { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.art {
+  aspect-ratio: 4 / 3; max-width: 100%; border-radius: 16px; overflow: hidden;
+  display: grid; place-items: center; padding: 20px; position: relative;
+}
+.kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 6px 0 0; }
+h3 { font-family: var(--display); font-weight: 800; font-size: 26px; line-height: 1.1; letter-spacing: -0.015em; color: var(--cream); margin: 0; text-wrap: balance; }
+.card p.copy { margin: 0; font-size: 16px; line-height: 1.55; }
+.link { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); text-decoration: none; align-self: flex-start; padding-block: 4px; }
+.link:hover { text-decoration: underline; text-underline-offset: 4px; }
+button.link { background: none; border: 0; padding: 4px 0; cursor: pointer; }
+
+/* art panels */
+.olive { background: var(--olive); color: var(--ink); }
+.orange { background: var(--orange); color: var(--ink); }
+.sand { background: var(--sand); color: var(--ink); }
+.cream { background: var(--cream); color: var(--ink); }
+.dark { background: var(--ink); color: var(--cream); border: 1px solid var(--line); }
+.tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+.big { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin: 0; }
+
+/* reveal: real photo or film sits above the drawn graphic, shown on rollover or tap */
+.reveal { padding: 0; cursor: pointer; }
+.draw { width: 100%; height: 100%; display: grid; place-items: center; padding: 20px; }
+.real { position: absolute; inset: 0; opacity: 0; transition: opacity 0.35s ease; background: var(--ink); }
+.real img, .real video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.real video { object-fit: contain; background: #000; }
+.real.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.real.duo img { min-width: 0; }
+.reveal.on .real { opacity: 1; }
+@media (hover: hover) { .reveal:hover .real { opacity: 1; } }
+.hint {
+  position: absolute; right: 12px; bottom: 12px; z-index: 2; pointer-events: none;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--ink); color: var(--cream); padding: 6px 11px; border-radius: 9999px;
+  transition: opacity 0.2s ease;
+}
+.hint::after { content: "Tap to see"; }
+@media (hover: hover) { .hint::after { content: "Hover to see"; } .reveal:hover .hint { opacity: 0; } }
+.reveal.on .hint { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .real, .hint { transition: none; } }
+
+/* drawn graphics */
+.phones { display: grid; grid-template-columns: repeat(10, 1fr); gap: 7px; width: 82%; }
+.phones span { aspect-ratio: 0.58; border-radius: 3px; background: #2b2829; border: 1px solid rgba(248, 245, 230, 0.25); }
+.phones span.on { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 10px rgba(224, 90, 58, 0.8); }
+.tree { width: 78%; height: auto; }
+.frames { width: 84%; height: auto; }
+
+.nine { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: 54%; }
+.nine span { aspect-ratio: 1.3; border-radius: 4px; background: var(--ink); }
+.nine span.pick { background: var(--orange); }
+
+.nose { width: 62%; height: auto; }
+.nose .glow-g { filter: drop-shadow(0 0 9px #3ddc84); }
+.nose .glow-r { filter: drop-shadow(0 0 9px #ff4d3a); }
+
+.bluff-big { font-family: var(--display); font-weight: 800; font-size: clamp(1.7rem, 4.2vw, 2.1rem); line-height: 1.02; letter-spacing: -0.02em; margin: 0; text-align: left; }
+.bluff-row { display: flex; gap: 8px; margin-top: 16px; }
+.bluff-row span { border: 1.5px solid var(--ink); border-radius: 9999px; padding: 6px 12px; }
+.bluff-row .on { background: var(--ink); color: var(--orange); }
+
+.debit { width: 78%; aspect-ratio: 1.586; background: var(--ink); color: var(--cream); border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+.debit .num { font-family: var(--mono); font-size: 13px; letter-spacing: 0.2em; }
+.debit .brand { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+.bubble { position: absolute; right: -6%; top: -12%; background: var(--orange); color: var(--ink); font-family: var(--display); font-weight: 800; font-size: 20px; padding: 8px 14px; border-radius: 16px 16px 16px 2px; transform: rotate(6deg); }
+
+.tally { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.years { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 2.6rem); letter-spacing: -0.02em; line-height: 1; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); border-radius: 9999px; padding: 6px 11px; }
+.chip.ink { border-color: var(--ink); }
+.chip.fill { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.stack { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+
+.contact { border-top: 1px dashed var(--line); padding-block: 56px 72px; display: grid; gap: 20px; }
+.contact h2 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 2.75rem); letter-spacing: -0.02em; line-height: 1.05; color: var(--cream); margin: 0; }
+.contact p { margin: 0; max-width: 34em; font-size: 19px; line-height: 28px; }
+.addr { font-family: var(--mono); font-size: 15px; color: var(--cream); user-select: all; word-break: break-all; }
+.foot { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-bottom: 32px; margin: 0; }
+
+@media (max-width: 520px) {
+  .hero { padding-block: 48px 40px; }
+  h3 { font-size: 24px; }
+}
+.foot a.archive { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.foot a.archive:hover { color: var(--cream); }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="mark">Daljit Singh</span>
+    <a class="pill" href="#contact">Get in touch</a>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Daljit Singh · Creative in Marketing, EMEA</p>
+    <h1>Ideas you can stand in front of.</h1>
+    <p class="lede">Twenty-five years of founding, leading and making creative work across brand, digital, product and live experience, from a tank hung with 150 ringing phones to a debit card that miaows. These are the pieces most relevant to bringing a brand onto a stage.</p>
+  </section>
+
+  <p class="section-label">Selected work</p>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="art sand reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show two magazine covers from 2001 featuring Digit">
+        <div class="draw">
+        <div class="tally">
+          <span class="years">1996 to 2010</span>
+          <div class="chips tag">
+            <span class="chip ink">D&amp;AD Black Pencil</span>
+            <span class="chip ink">2 BAFTAs</span>
+            <span class="chip ink">Clios</span>
+            <span class="chip ink">Cyber Lion</span>
+          </div>
+        </div>
+      </div>
+        <div class="real duo">
+          <img src="media/digit-designweek.jpg" alt="Design Week cover, 2 March 2001, four people from Digit on a rooftop under the headline Digit on the pulse" style="object-position:50% 30%" width="520" height="460" loading="lazy">
+          <img src="media/digit-nmc.jpg" alt="New Media Creative cover, February 2001, a close portrait of Daljit Singh under the headline Can you Digit?" style="object-position:55% 30%" width="520" height="460" loading="lazy">
+        </div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Agency · Founder</p>
+      <h3>Digit</h3>
+      <p class="copy">Founded the agency, grew it past 100 people and sold it to WPP in 2005. A design-led R&amp;D programme fed the work, from the first 3D website for MTV2 to campaigns for Coca-Cola, Nokia, the BBC and the National Gallery. I hired as readily from theatre, print and film as from digital, and asked only that everyone could draw, because an idea you cannot sketch is very hard to share with a team.</p>
+      <p class="copy">The work reached the covers of Design Week and New Media Creative and a Creative Review feature, and MTV2 won Best of Show at the Design Week Awards.</p>
+    </article>
+
+    <article class="card">
+      <div class="art cream reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show a photograph of a Fjord workshop">
+        <div class="draw">
+        <div>
+          <p class="big" style="font-size: clamp(2.4rem, 6vw, 3.1rem); margin-bottom: 16px;">5 studios.</p>
+          <div class="chips tag">
+            <span class="chip ink">London</span>
+            <span class="chip ink">Berlin</span>
+            <span class="chip ink">Istanbul</span>
+            <span class="chip ink">Madrid</span>
+            <span class="chip ink">Dubai</span>
+          </div>
+        </div>
+        </div>
+        <div class="real"><img src="media/fjord.jpg" alt="A Fjord workshop: six people stand in front of a whiteboard covered in sticky notes that chart the stages of a person's life" style="object-position:80% 35%" width="1400" height="485" loading="lazy"></div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Strategy · Fjord, Accenture · 2015 to 2017</p>
+      <h3>One region, one strategy</h3>
+      <p class="copy">Led design strategy across Fjord's EMEA studios for Audi, HSBC, Microsoft and Etisalat, and led new business pitches by assembling teams from different studios and markets.</p>
+    </article>
+
+    <article class="card">
+      <div class="art olive">
+        <div class="stack tag">
+          <span class="chip fill">Michael Wolff</span>
+          <span class="chip fill">NB Studio</span>
+          <span class="chip fill">ustwo</span>
+          <span class="chip fill">Fjord</span>
+        </div>
+      </div>
+      <p class="kicker">Partners · Choosing and directing</p>
+      <h3>Working with outside talent</h3>
+      <p class="copy">Directed ANNA's identity with Michael Wolff and NB Studio, and at Tochka wrote the briefs and ran the pitch that brought in ustwo, Fjord and independent designers. I have been the agency and the client, so I know good direction from both sides.</p>
+    </article>
+
+    <article class="card">
+      <div class="art dark">
+        <div class="chips tag">
+          <span class="chip">Clarity</span>
+          <span class="chip">Honesty</span>
+          <span class="chip">Reliability</span>
+          <span class="chip">Fairness</span>
+          <span class="chip">Care</span>
+          <span class="chip">Friction</span>
+          <span class="chip" style="border-color: var(--orange); color: var(--orange);">Consistency</span>
+        </div>
+      </div>
+      <p class="kicker">AI · Built with Andrew Beckley</p>
+      <h3>Trust Signal Read</h3>
+      <p class="copy">An AI tool that scores customer communications against our Seven Trust Signals, quotes the evidence and rewrites the most damaging sentence. We use it live in client pitches.</p>
+    </article>
+
+    <article class="card">
+      <div class="art dark reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show the photograph of the Digital Aquarium">
+        <div class="draw"><div class="phones" id="phones" aria-hidden="true"></div></div>
+        <div class="real"><img src="media/aquarium.jpg" alt="Phones hanging on cables inside a glass tank on a London riverside at night, with Tower Bridge behind" width="500" height="373" loading="lazy"></div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Installation · Design Museum · c. 2004</p>
+      <h3>The Digital Aquarium</h3>
+      <p class="copy">I borrowed 150 phones from Motorola and hung them in a tank. Visitors called a number on the outside and the phones rang and lit up in staggered order, so the calls swam across the tank like a school of fish. It stood outside the Design Museum in London and was the first installation of its kind.</p>
+    </article>
+
+    <article class="card">
+      <div class="art olive reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show photographs of the Typographic Tree">
+        <div class="draw">
+          <svg class="tree" viewBox="0 0 200 150" aria-hidden="true">
+            <path d="M100 148 L100 70" stroke="#0c0b0b" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <path d="M100 100 L64 70 M100 90 L138 58 M100 70 L100 30 M64 70 L40 50 M138 58 L166 44" stroke="#0c0b0b" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <g font-family="Inter, Arial, sans-serif" font-weight="800" fill="#0c0b0b">
+              <text x="28" y="48" font-size="26">a</text>
+              <text x="54" y="62" font-size="20">g</text>
+              <text x="92" y="26" font-size="34">R</text>
+              <text x="132" y="52" font-size="22">e</text>
+              <text x="166" y="42" font-size="28">s</text>
+              <text x="126" y="84" font-size="16">o</text>
+            </g>
+          </svg>
+        </div>
+        <div class="real duo">
+          <img src="media/tree-a.jpg" alt="Projected silhouette of a tree with leaves and orange flowers against a misty jungle backdrop" style="object-position: 52% 50%;" width="500" height="374" loading="lazy">
+          <img src="media/tree-b.jpg" alt="A man in a hat leans over a glowing tree stump with small lit objects on top" style="object-position: 58% 50%;" width="500" height="374" loading="lazy">
+        </div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Installation · ICA, London · c. 2003</p>
+      <h3>The Typographic Tree</h3>
+      <p class="copy">Visitors spoke into a microphone in the trunk of a life-size projected tree and their voices made it grow, twist and contort. Louder, sharper sounds made flowers bloom or startled creatures in the distance. It was shown at the ICA in London, part of Digit's own R&amp;D.</p>
+    </article>
+
+    <article class="card">
+      <div class="art orange reveal" id="gt-art" tabindex="0" role="button" aria-pressed="false" aria-label="Show the photograph of the Grand Tour">
+        <div class="draw">
+          <svg class="frames" viewBox="0 0 220 140" aria-hidden="true">
+            <rect x="12" y="24" width="52" height="68" rx="2" fill="none" stroke="#0c0b0b" stroke-width="5"/>
+            <rect x="82" y="14" width="56" height="84" rx="2" fill="none" stroke="#0c0b0b" stroke-width="5"/>
+            <rect x="156" y="30" width="52" height="60" rx="2" fill="none" stroke="#0c0b0b" stroke-width="5"/>
+            <path d="M12 122 L208 122" stroke="#0c0b0b" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="real">
+          <img id="gt-img" src="media/grandtour.jpg" alt="A framed reproduction of Holbein's The Ambassadors hung on a green wall above a pile of pale blue bin bags on a London street" width="900" height="644" loading="lazy">
+          <video id="gt-video" src="media/grandtour.mp4" controls preload="none" playsinline hidden></video>
+        </div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Public exhibition · National Gallery · 2007</p>
+      <h3>The Grand Tour</h3>
+      <p class="copy">An outdoor exhibition of the gallery's Old Master paintings across Central London, built to bring more people through its doors. The design consultancy The Partners devised it with HP, and Digit produced the digital layer. This was before the mobile internet, so you dialled the number under each painting to hear a curator talk about it, and we made the maps and tours people followed from one painting to the next.</p>
+      <button class="link" type="button" id="gt-play">Play the film →</button>
+    </article>
+
+    <article class="card">
+      <div class="art cream reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show the film of people spraying digital graffiti">
+        <div class="draw">
+          <div class="stack">
+            <p class="big" style="font-size: clamp(2.4rem, 7vw, 3.2rem);">500,000</p>
+            <span class="tag">Ringtones sprayed on glass</span>
+          </div>
+        </div>
+        <div class="real"><img src="media/motoglyph.gif" alt="Dizzee Rascal spraying glowing green letters onto a dark glass wall" width="360" height="295" loading="lazy"></div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Interactive · Motorola · 2008</p>
+      <h3>Motoglyph</h3>
+      <p class="copy">More than 500,000 people made their own ringtones by digitally spraying on glass, among them Dizzee Rascal, seen here at the Miami Music Conference. It was the first of its kind, made for Motorola, and we then licensed it to Motorola, who used it around the world.</p>
+    </article>
+
+    <article class="card">
+      <div class="art sand reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show the photograph of the Cyber-shot booth">
+        <div class="draw">
+          <div class="nine" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <span></span><span class="pick"></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="real"><img src="media/k800i.jpg" alt="A Sony Ericsson booth reading Never miss a shot in a station concourse, with a man looking at its screens and another person leaping in the background" width="500" height="374" loading="lazy"></div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Interactive booth · Sony Ericsson · Train stations</p>
+      <h3>K800i Cyber-shot</h3>
+      <p class="copy">The phone took nine photos in rapid succession and needed a simple, memorable way to show why that mattered. Years of R&amp;D meant we could design, program and build the whole interactive experience from the ground up. We made it with MediaEdge:CIA, part of WPP, and it appeared in main train stations across Europe, including London Victoria.</p>
+    </article>
+
+    <article class="card">
+      <div class="art cream reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show the Creative Review spread of Mass Games mosaics">
+        <div class="draw"><div class="stack"><svg viewBox="0 0 166 110" class="pix" aria-hidden="true" style="width:min(70%,260px)"><rect x="0" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="14" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="28" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="42" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="56" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="70" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="84" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="98" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="112" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="126" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="140" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="154" y="0" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="0" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="14" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="28" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="42" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="56" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="70" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="84" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="98" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="112" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="126" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="140" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="154" y="14" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="0" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="14" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="28" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="42" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="56" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="70" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="84" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="98" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="112" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="126" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="140" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="154" y="28" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="0" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="14" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="28" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="42" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="56" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="70" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="84" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="98" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="112" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="126" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="140" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="154" y="42" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="0" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="14" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="28" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="42" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="56" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="70" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="84" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="98" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="112" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="126" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="140" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="154" y="56" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="0" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="14" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="28" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="42" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="56" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="70" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="84" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="98" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="112" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="126" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="140" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="154" y="70" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="0" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="14" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="28" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="42" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="56" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="70" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="84" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="98" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity="1"/><rect x="112" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="126" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="140" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="154" y="84" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="0" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="14" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="28" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="42" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="56" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="70" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="84" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="98" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="112" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="126" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="140" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/><rect x="154" y="98" width="12" height="12" rx="2" fill="#0c0b0b" opacity=".18"/></svg><span class="tag">20,000 children, one image</span></div></div>
+        <div class="real duo"><img src="media/cr-cover.jpg" alt="Creative Review cover, January 2006, purple with a pull quote about typography as the image" style="object-position:50% 35%" width="560" height="700" loading="lazy"><img src="media/pixels.jpg" alt="Grid of photographs of North Korean Mass Games mosaics, from the Creative Review spread of January 2006" width="600" height="620" loading="lazy"></div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Spectacle · Creative Review, January 2006</p>
+      <h3>Night of the Human Pixels</h3>
+      <p class="copy">Tess O'Leary and I travelled to Pyongyang to see the Arirang Mass Games, where 20,000 schoolchildren turn the pages of coloured books on cue to make a mosaic across one side of the stadium, with 200,000 performers in all. Creative Review ran our photographs, a lesson in staging at a scale few brands will ever attempt.</p>
+    </article>
+
+    <article class="card">
+      <div class="art olive reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show a photograph of the ANNA debit card held in two hands">
+        <div class="draw">
+        <div class="debit">
+          <span class="num">•••• 0001</span>
+          <span class="brand">ANNA</span>
+          <span class="bubble">Miaow!</span>
+        </div>
+        </div>
+        <div class="real"><img src="media/anna-card.jpg" alt="Two hands holding the white ANNA debit card, with its red line drawing of a cat blowing a horn" style="object-position:50% 45%" width="696" height="506" loading="lazy"></div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Physical product · ANNA Money</p>
+      <h3>The miaowing debit card</h3>
+      <p class="copy">The world's first debit card that miaows when you pay, and later an app that woofs when you get paid. A small joke built on a product truth, that running your own business should be fun. It earned coverage in The Times and WIRED and around 3m video views.</p>
+      <p class="copy"><a href="https://www.youtube.com/watch?v=mWXyk_bvky4" target="_blank" rel="noopener" style="color:var(--orange);font-family:'IBM Plex Mono',monospace;font-size:.8rem;text-decoration:none">Watch the launch film →</a></p>
+    </article>
+
+    <article class="card">
+      <div class="art orange reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show photographs from the first Call My Bluff evening">
+        <div class="draw">
+        <div>
+          <p class="bluff-big">Two bluffs.<br>One truth.</p>
+          <div class="bluff-row tag"><span>Bluff</span><span class="on">True</span><span>Bluff</span></div>
+        </div>
+      </div>
+        <div class="real"><img src="media/callmybluff.gif" alt="Guests seated under black beams and pendant lamps at the first Call My Bluff evening, a monstera plant in the foreground" width="520" height="520" loading="lazy"></div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Event · Launched 30 April 2026</p>
+      <h3>Call My Bluff</h3>
+      <p class="copy">An evening for people working at the sharp edge of trust, from finance, design, risk and behaviour, with voices from well outside the usual frame. Around thirty came to the first at Diespeker Wharf, where Nicolas Roope argued that integrity is coherence across a whole system and art provenance expert Angelina Giovani-Agha showed what trust is worth when it is the entire value. Co-hosted with Hem Patel of Parallel, in a room from Tim Malbon of Made by Many.</p>
+    </article>
+
+    <article class="card">
+      <div class="art dark reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show a concept image of the Trust Nose worn on a denim jacket">
+        <div class="draw"><svg class="nose" viewBox="0 0 200 150" aria-hidden="true">
+          <path d="M88 8 L112 8 L130 66 L70 66 Z" fill="#2b2829" stroke="#f8f5e6" stroke-width="2" stroke-linejoin="round"/>
+          <ellipse cx="100" cy="92" rx="62" ry="46" fill="#2b2829" stroke="#f8f5e6" stroke-width="2"/>
+          <circle class="glow-g" cx="78" cy="100" r="15" fill="#3ddc84"/>
+          <circle class="glow-r" cx="122" cy="100" r="15" fill="#ff4d3a"/>
+        </svg>
+</div>
+        <div class="real"><img src="media/nose.jpg" alt="Concept image of a skin-coloured nose-shaped badge on a denim jacket lapel, one nostril glowing green" style="object-position:72% 55%" width="522" height="545" loading="lazy"></div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Provoke · Prototype</p>
+      <h3>The Trust Nose</h3>
+      <p class="copy">A wearable nose with one nostril that glows green and one that glows red, made to turn the idea of trust into something you can wear and talk about. It began when my daughter asked why restaurants have three stars outside, and as I explained the hygiene rating she said, well, it smells okay. I am making a small number as prototypes to open conversations about what we know and what we trust.</p>
+    </article>
+
+    <article class="card">
+      <div class="art dark reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show the Wired cover and the page carrying my column">
+        <div class="draw"><div class="stack"><p class="bluff-big" style="color:var(--cream);text-align:center">Luxury must become interactive to survive.</p><span class="tag">Wired, July 2012</span></div></div>
+        <div class="real duo">
+          <img src="media/wired-cover.jpg" alt="Wired UK cover, July 2012, Jonathan Ive on the front of the Wired 100 issue" style="object-position:40% 30%" width="560" height="629" loading="lazy">
+          <img src="media/wired-column.jpg" alt="The Wired page carrying Daljit Singh's column Luxury must become interactive to survive" style="object-position:85% 15%" width="560" height="480" loading="lazy">
+        </div>
+        <span class="hint"></span>
+      </div>
+      <p class="kicker">Writing · Wired</p>
+      <h3>Luxury must become interactive</h3>
+      <p class="copy">A column for the Wired 100 issue with Jonathan Ive on the cover, arguing that luxury and technology share a craft and that the screen alone cannot hold a luxury product's value. That thinking took me to the V&amp;A as the original guest curator of its luxury exhibition, where my vision for the show was not the one carried forward, and it went on to become Ore, the technology jewellery I co-founded.</p>
+    </article>
+
+  </div>
+
+  <section class="contact" id="contact">
+    <h2>Talk to me.</h2>
+    <p>Happy to walk through any of this in person, or send the full CV.</p>
+    <span class="addr">daljit@trustsideways.com</span>
+    <div><a class="pill" href="mailto:daljit@trustsideways.com">Email Daljit</a></div>
+  </section>
+
+  <p class="foot">Daljit Singh · London · <a class="archive" href="https://daljit.tumblr.com" target="_blank" rel="noopener">Older work, the archive</a></p>
+</div>
+
+<script>
+(function () {
+  var host = document.getElementById("phones");
+  if (host) {
+    for (var i = 0; i < 50; i++) {
+      var s = document.createElement("span");
+      var x = i % 10, y = Math.floor(i / 10);
+      if ((x + y * 2) % 7 < 2) s.className = "on";
+      host.appendChild(s);
+    }
+  }
+
+  function setOn(el, on) {
+    el.classList.toggle("on", on);
+    el.setAttribute("aria-pressed", on ? "true" : "false");
+    var v = el.querySelector("video");
+    if (v && !on) {
+      v.pause();
+      v.hidden = true;
+      var im = el.querySelector(".real img");
+      if (im) im.hidden = false;
+    }
+  }
+  var cards = document.querySelectorAll(".reveal");
+  for (var c = 0; c < cards.length; c++) {
+    (function (el) {
+      el.addEventListener("click", function (e) {
+        if (e.target.closest && e.target.closest("video")) return;
+        setOn(el, !el.classList.contains("on"));
+      });
+      el.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setOn(el, !el.classList.contains("on"));
+        }
+      });
+    })(cards[c]);
+  }
+
+  var btn = document.getElementById("gt-play");
+  var art = document.getElementById("gt-art");
+  var img = document.getElementById("gt-img");
+  var vid = document.getElementById("gt-video");
+  if (btn && art && img && vid) {
+    btn.addEventListener("click", function () {
+      art.classList.add("on");
+      art.setAttribute("aria-pressed", "true");
+      img.hidden = true;
+      vid.hidden = false;
+      var pr = vid.play();
+      if (pr && pr.catch) pr.catch(function () {});
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
