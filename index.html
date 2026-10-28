@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Daljit Singh</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -156,6 +155,72 @@ button.link { background: none; border: 0; padding: 4px 0; cursor: pointer; }
 }
 .foot a.archive { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .foot a.archive:hover { color: var(--cream); }
+
+/* looping graphics, in the spirit of the Sideways ideas page */
+@keyframes k-pop { 0%, 6% { transform: scale(0); opacity: 0; } 16%, 82% { transform: scale(1); opacity: 1; } 92%, 100% { transform: scale(0); opacity: 0; } }
+@keyframes k-rise { 0%, 6% { transform: translateY(14px); opacity: 0; } 16%, 82% { transform: translateY(0); opacity: 1; } 94%, 100% { transform: translateY(0); opacity: 0; } }
+@keyframes k-grow { 0%, 6% { transform: scaleX(0); } 28%, 82% { transform: scaleX(1); } 96%, 100% { transform: scaleX(0); } }
+@keyframes k-wiggle { 0%, 30%, 100% { transform: rotate(0); } 34% { transform: rotate(-4deg); } 38% { transform: rotate(4deg); } 42% { transform: rotate(-3deg); } 46% { transform: rotate(2deg); } 50% { transform: rotate(0); } }
+@keyframes k-swim { 0%, 55%, 100% { background: #2b2829; border-color: rgba(248, 245, 230, 0.25); box-shadow: none; } 15%, 35% { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 10px rgba(224, 90, 58, 0.8); } }
+@keyframes k-draw { 0%, 4% { stroke-dashoffset: 1; } 26%, 88% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 1; } }
+@keyframes k-flash { 0%, 100% { background: var(--ink); } 4%, 12% { background: var(--orange); } 24% { background: var(--ink); } }
+@keyframes k-turn { 0%, 55%, 100% { transform: scaleX(1); } 25% { transform: scaleX(0.08); } }
+@keyframes k-hl { 0%, 100% { background: transparent; color: var(--ink); } 4%, 30% { background: var(--ink); color: var(--orange); } 36% { background: transparent; color: var(--ink); } }
+@keyframes k-glow-a { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0.15; } 100% { opacity: 1; } }
+@keyframes k-glow-b { 0%, 45% { opacity: 0.15; } 50%, 95% { opacity: 1; } 100% { opacity: 0.15; } }
+@keyframes k-bubble { 0%, 36% { transform: rotate(6deg) scale(0); opacity: 0; } 44%, 82% { transform: rotate(6deg) scale(1); opacity: 1; } 92%, 100% { transform: rotate(6deg) scale(0); opacity: 0; } }
+
+.w { display: inline-block; }
+.pix rect, .tree text, .frames rect { transform-box: fill-box; transform-origin: center; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .grid > .card:nth-child(1) .chip { animation: k-pop 6s ease-in-out infinite both; }
+  .grid > .card:nth-child(2) .chip { animation: k-rise 6s ease-out infinite both; }
+  .grid > .card:nth-child(3) .chip { animation: k-rise 6s ease-out infinite both; }
+  .grid > .card:nth-child(4) .chip { animation: k-rise 6s ease-out infinite both; }
+  .chips .chip:nth-child(1), .stack .chip:nth-child(1) { animation-delay: 0s; }
+  .chips .chip:nth-child(2), .stack .chip:nth-child(2) { animation-delay: 0.3s; }
+  .chips .chip:nth-child(3), .stack .chip:nth-child(3) { animation-delay: 0.6s; }
+  .chips .chip:nth-child(4), .stack .chip:nth-child(4) { animation-delay: 0.9s; }
+  .chips .chip:nth-child(5) { animation-delay: 1.2s; }
+  .chips .chip:nth-child(6) { animation-delay: 1.5s; }
+  .chips .chip:nth-child(7) { animation-delay: 1.8s; }
+
+  .phones span { animation: k-swim 3.6s ease-in-out infinite; }
+
+  .tree .tr, .tree .br { stroke-dasharray: 1; animation: k-draw 6s ease-out infinite; }
+  .tree .br { animation-delay: 0.5s; }
+  .tree text { animation: k-pop 6s ease-in-out infinite both; }
+  .tree text:nth-child(1) { animation-delay: 1.4s; } .tree text:nth-child(2) { animation-delay: 1.7s; } .tree text:nth-child(3) { animation-delay: 2s; }
+  .tree text:nth-child(4) { animation-delay: 2.3s; } .tree text:nth-child(5) { animation-delay: 2.6s; } .tree text:nth-child(6) { animation-delay: 2.9s; }
+
+  .frames rect { animation: k-pop 6s ease-in-out infinite both; }
+  .frames rect:nth-child(2) { animation-delay: 0.5s; } .frames rect:nth-child(3) { animation-delay: 1s; }
+  .frames path { transform-box: fill-box; transform-origin: left center; animation: k-grow 6s ease-out infinite both; animation-delay: 1.2s; }
+
+  .grid > .card:nth-child(8) .tag { animation: k-rise 6s ease-out infinite both; animation-delay: 0.6s; }
+
+  .nine span { animation: k-flash 3.6s ease-out infinite; }
+  .nine span:nth-child(2) { animation-delay: 0.15s; } .nine span:nth-child(3) { animation-delay: 0.3s; }
+  .nine span:nth-child(4) { animation-delay: 0.45s; } .nine span:nth-child(5) { animation-delay: 0.6s; } .nine span:nth-child(6) { animation-delay: 0.75s; }
+  .nine span:nth-child(7) { animation-delay: 0.9s; } .nine span:nth-child(8) { animation-delay: 1.05s; } .nine span:nth-child(9) { animation-delay: 1.2s; }
+  .nine span.pick { background: var(--ink); }
+
+  .pix rect { animation: k-turn 4s ease-in-out infinite; }
+  .pix rect:nth-child(12n+1) { animation-delay: 0.00s; } .pix rect:nth-child(12n+2) { animation-delay: 0.12s; } .pix rect:nth-child(12n+3) { animation-delay: 0.24s; } .pix rect:nth-child(12n+4) { animation-delay: 0.36s; } .pix rect:nth-child(12n+5) { animation-delay: 0.48s; } .pix rect:nth-child(12n+6) { animation-delay: 0.60s; } .pix rect:nth-child(12n+7) { animation-delay: 0.72s; } .pix rect:nth-child(12n+8) { animation-delay: 0.84s; } .pix rect:nth-child(12n+9) { animation-delay: 0.96s; } .pix rect:nth-child(12n+10) { animation-delay: 1.08s; } .pix rect:nth-child(12n+11) { animation-delay: 1.20s; } .pix rect:nth-child(12n+12) { animation-delay: 1.32s; }
+
+  .debit { animation: k-wiggle 6s ease-in-out infinite; transform-origin: 50% 90%; }
+  .bubble { animation: k-bubble 6s ease-in-out infinite both; }
+
+  .bluff-row span, .bluff-row .on { background: transparent; color: var(--ink); animation: k-hl 6s ease-in-out infinite; }
+  .bluff-row span:nth-child(2) { animation-delay: 2s; } .bluff-row span:nth-child(3) { animation-delay: 4s; }
+
+  .nose .glow-g { animation: k-glow-a 3s ease-in-out infinite; }
+  .nose .glow-r { animation: k-glow-b 3s ease-in-out infinite; }
+
+  .w { animation: k-rise 6s ease-out infinite both; animation-delay: calc(var(--i) * 0.3s); }
+  .grid > .card:nth-child(14) .tag { animation: k-rise 6s ease-out infinite both; animation-delay: 1.9s; }
+}
 </style>
 
 <div class="wrap">
@@ -267,8 +332,8 @@ button.link { background: none; border: 0; padding: 4px 0; cursor: pointer; }
       <div class="art olive reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show photographs of the Typographic Tree">
         <div class="draw">
           <svg class="tree" viewBox="0 0 200 150" aria-hidden="true">
-            <path d="M100 148 L100 70" stroke="#0c0b0b" stroke-width="7" stroke-linecap="round" fill="none"/>
-            <path d="M100 100 L64 70 M100 90 L138 58 M100 70 L100 30 M64 70 L40 50 M138 58 L166 44" stroke="#0c0b0b" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path pathLength="1" class="tr" d="M100 148 L100 70" stroke="#0c0b0b" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <path pathLength="1" class="br" d="M100 100 L64 70 M100 90 L138 58 M100 70 L100 30 M64 70 L40 50 M138 58 L166 44" stroke="#0c0b0b" stroke-width="4" stroke-linecap="round" fill="none"/>
             <g font-family="Inter, Arial, sans-serif" font-weight="800" fill="#0c0b0b">
               <text x="28" y="48" font-size="26">a</text>
               <text x="54" y="62" font-size="20">g</text>
@@ -316,7 +381,7 @@ button.link { background: none; border: 0; padding: 4px 0; cursor: pointer; }
       <div class="art cream reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show the film of people spraying digital graffiti">
         <div class="draw">
           <div class="stack">
-            <p class="big" style="font-size: clamp(2.4rem, 7vw, 3.2rem);">500,000</p>
+            <p class="big" style="font-size: clamp(2.4rem, 7vw, 3.2rem);"><span data-count="500000">500,000</span></p>
             <span class="tag">Ringtones sprayed on glass</span>
           </div>
         </div>
@@ -409,7 +474,7 @@ button.link { background: none; border: 0; padding: 4px 0; cursor: pointer; }
 
     <article class="card">
       <div class="art dark reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Show the Wired cover and the page carrying my column">
-        <div class="draw"><div class="stack"><p class="bluff-big" style="color:var(--cream);text-align:center">Luxury must become interactive to survive.</p><span class="tag">Wired, July 2012</span></div></div>
+        <div class="draw"><div class="stack"><p class="bluff-big" style="color:var(--cream);text-align:center" aria-label="Luxury must become interactive to survive."><span aria-hidden="true"><span class="w" style="--i:0">Luxury</span> <span class="w" style="--i:1">must</span> <span class="w" style="--i:2">become</span> <span class="w" style="--i:3">interactive</span> <span class="w" style="--i:4">to</span> <span class="w" style="--i:5">survive.</span></span></p><span class="tag">Wired, July 2012</span></div></div>
         <div class="real duo">
           <img src="media/wired-cover.jpg" alt="Wired UK cover, July 2012, Jonathan Ive on the front of the Wired 100 issue" style="object-position:40% 30%" width="560" height="629" loading="lazy">
           <img src="media/wired-column.jpg" alt="The Wired page carrying Daljit Singh's column Luxury must become interactive to survive" style="object-position:85% 15%" width="560" height="480" loading="lazy">
@@ -441,8 +506,25 @@ button.link { background: none; border: 0; padding: 4px 0; cursor: pointer; }
       var s = document.createElement("span");
       var x = i % 10, y = Math.floor(i / 10);
       if ((x + y * 2) % 7 < 2) s.className = "on";
+      s.style.animationDelay = (x * 0.16 + y * 0.09).toFixed(2) + "s";
       host.appendChild(s);
     }
+  }
+
+  var counters = document.querySelectorAll("[data-count]");
+  if (counters.length && !(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    Array.prototype.forEach.call(counters, function (el) {
+      var target = parseInt(el.getAttribute("data-count"), 10), t0 = null;
+      var fmt = function (n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); };
+      function frame(ts) {
+        if (t0 === null) t0 = ts;
+        var t = (ts - t0) % 6000;
+        var p = t < 2600 ? 1 - Math.pow(1 - t / 2600, 3) : 1;
+        el.textContent = fmt(Math.round(target * p));
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
   }
 
   function setOn(el, on) {
